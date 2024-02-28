@@ -106,4 +106,18 @@ public class Myarraylist {
 		//palielinam counter pa 1
 		counter++;
 	}
+	
+	public void deleteIndexElement(int index) throws Exception {
+		//parbaude par index, ja nav pareizs izmet iznemumu
+		if (index < 0 || index >= counter) throw  new Exception("Wrong index");
+		//parbauda isempty
+		if (isEmpty()) throw  new Exception("List Empty");
+		//vekt parkopesanu , lai elemeti sakot no noradita pabiditos pa kreisi
+		
+			for (int i = index; i < counter - 1; i++) {	
+				list[i] = list[i+1];
+			}
+		//samazinam counter pa 1
+		counter--;
+	}
 }
