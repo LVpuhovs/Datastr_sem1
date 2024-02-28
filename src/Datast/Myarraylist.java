@@ -89,10 +89,21 @@ public class Myarraylist {
 		counter++; 
 	}
 	
-	public void addElementIndex(int element, int index) {
-		//parbeude par index, ja nav pareizs izmet iznemumu
+	public void addElementIndex(int element, int index) throws Exception {
+		//parbaude par index, ja nav pareizs izmet iznemumu
+		if (index < 0 || index > counter) throw  new Exception("Wrong index");
 		//parbauda isfull
+		if (isFull()) resize();
 		//vekt parkopesanu , lai elemeti sakot no noradita pabiditos pa labi
-		//
+		if ( index == counter) addElement(element);
+		else {
+			for (int i = counter; i > index; i--) {	
+				list[i] = list[i-1];
+			}
+		}
+		//ievieto index  suna pasu elementu
+		list[index] = element;
+		//palielinam counter pa 1
+		counter++;
 	}
 }
