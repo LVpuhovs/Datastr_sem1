@@ -1,6 +1,7 @@
 package Datast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Myarraylist {
 	
@@ -166,4 +167,24 @@ public class Myarraylist {
 		return kaimini;
 	}
 	
+	public void print() throws Exception {
+		if (isEmpty()) throw  new Exception("List Empty");
+		
+		for(int i = 0; i < size; i++) {
+			System.out.println(list[i] + " ");
+		}
+	}
+	
+	public void makeEmpty() {
+		counter = 0;
+		size = LIST_DEFAULT_SIZE;
+		list = new int[size];
+		System.gc();
+	}
+	
+	int[] arraySort(int[] array) throws Exception{
+		if (array == null) throw new Exception("Wrong input parametrs");
+		Arrays.sort(array);
+		return array;
+	}
 }
