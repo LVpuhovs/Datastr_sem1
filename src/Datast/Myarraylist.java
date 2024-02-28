@@ -120,4 +120,19 @@ public class Myarraylist {
 		//samazinam counter pa 1
 		counter--;
 	}
+	public int getElement(int index) throws Exception {
+		//parbaude par index, ja nav pareizs izmet iznemumu
+		if (index < 0 || index > counter) throw  new Exception("Wrong index");
+		if (isEmpty()) throw  new Exception("List Empty");
+		return list[index];
+	}
+	public int findElement(int element) throws Exception {
+		if (isEmpty()) throw  new Exception("List Empty");
+		
+		for(int i = 0; i < counter; i++) {
+			if(list[i] == counter) 
+				return i;
+		}
+		throw  new Exception("Element with this index not found");
+	}
 }
