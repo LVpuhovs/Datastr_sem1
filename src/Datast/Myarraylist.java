@@ -7,7 +7,6 @@ public class Myarraylist {
 	private int size = LIST_DEFAULT_SIZE;
 	private int counter = 0;
 	
-	//TODO
 	//konstruktori
 	public Myarraylist() {
 		list = new int[size]; 
@@ -47,7 +46,7 @@ public class Myarraylist {
 		return counter;
 	}
 	
-	//TODO
+	
 	//1. Funkcijas dekleracija
 	private void resize() {
 		
@@ -76,5 +75,24 @@ public class Myarraylist {
 		System.gc();
 	//8. size nomainam uz newSize
 		size = newSize;
+	}
+	
+	
+	//funkcijas dekleracija
+	public void addElement(int element) {	
+	//parbauda isfull tad resize izsaukms
+		if (isFull()) resize();
+	//ieliekam jaunu elementu
+		//list[counter++] = element;
+		list[counter] = element;
+	//palielinam counter par 1
+		counter++; 
+	}
+	
+	public void addElementIndex(int element, int index) {
+		//parbeude par index, ja nav pareizs izmet iznemumu
+		//parbauda isfull
+		//vekt parkopesanu , lai elemeti sakot no noradita pabiditos pa labi
+		//
 	}
 }
