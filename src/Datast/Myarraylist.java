@@ -1,5 +1,7 @@
 package Datast;
 
+import java.util.ArrayList;
+
 public class Myarraylist {
 	
 	private int[] list;
@@ -126,6 +128,7 @@ public class Myarraylist {
 		if (isEmpty()) throw  new Exception("List Empty");
 		return list[index];
 	}
+	/*
 	public int findElement(int element) throws Exception {
 		if (isEmpty()) throw  new Exception("List Empty");
 		
@@ -135,4 +138,32 @@ public class Myarraylist {
 		}
 		throw  new Exception("Element with this index not found");
 	}
+	*/
+	public ArrayList search(int element) throws Exception {
+		if (isEmpty()) throw  new Exception("List Empty");
+		
+		ArrayList indexes = new ArrayList();
+		
+		for (int i = 0; i < counter; i++) {
+			if(list[i] == element) indexes.add(i);
+		}
+		return indexes;
+	}
+	
+	public int[] nextElement(int element) throws Exception {
+		ArrayList indexes = search(element);
+		
+		int kaiminuSize = indexes.size();
+		
+		if((int)indexes.get(indexes.size()-1) == counter -1) kaiminuSize--;
+		
+		int[] kaimini = new int[kaiminuSize];
+		for(int i = 0;i < kaiminuSize; i++) {
+			int indexfromsearchTemp = (int) indexes.get(i);
+			int indexkaiminiTemp = indexfromsearchTemp+1;
+			kaimini[i] = list[indexfromsearchTemp];
+		}
+		return kaimini;
+	}
+	
 }
