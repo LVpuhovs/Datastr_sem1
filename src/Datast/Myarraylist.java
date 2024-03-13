@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import model.Student;
 
-public class Myarraylist<Ttype> {
+public class Myarraylist<Ttype>{
 	
 	private Ttype[] list;
 	private final int LIST_DEFAULT_SIZE = 10;
@@ -172,7 +172,7 @@ public class Myarraylist<Ttype> {
 	public void print() throws Exception {
 		if (isEmpty()) throw  new Exception("List Empty");
 		
-		for(int i = 0; i < size; i++) {
+		for(int i = 0; i < counter; i++) {
 			System.out.println(list[i] + " ");
 		}
 	}
@@ -184,10 +184,18 @@ public class Myarraylist<Ttype> {
 		System.gc();
 	}
 	
-	Ttype[] arraySort(Ttype[] array) throws Exception{
-		if (array == null) throw new Exception("Wrong input parametrs");
-		Arrays.sort(array);
-		return array;
+	public void sort() throws Exception {
+		if(isEmpty()) throw new Exception("Array is empty and it "
+				+ "is not possible to sort");
+		
+		for(int i = 0; i < counter; i++) {
+			for(int j = 0; j < counter; j++) {
+				//if(list[i]> list[j]) {
+				if(   ((Comparable)(list[i])).compareTo(list[j]) == -1 ){
+					swap(i, j);
+				}
+			}
+		}
 	}
 	private void swap(int index1, int index2) {
 		Ttype temp = list[index1];

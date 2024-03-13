@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public class Student{
 	//1.variables
 		private long sID;
 		private String name;
@@ -45,13 +45,14 @@ public class Student {
 		public String getPersonCode() {
 			return personCode;
 		}
-
+		/*
 		public void setPersonCode(String personCode) {
 			if(personCode != null && personCode.matches("[0-9]{6}-[0-9]{5}"))
 				this.personCode = personCode;
 			else
 				this.personCode = "Undefined";
 		}
+		*/
 		
 		//3. constructors
 		
@@ -62,14 +63,14 @@ public class Student {
 			setsID();
 			setName("Baiba");
 			setSurname("Jaukā");
-			setPersonCode("123456-12345");
+			//setPersonCode("123456-12345");
 		}
 		
-		public Student(String name, String surname, String personCode) {
+		public Student(String name, String surname) {
 			setsID();
 			setName(name);
 			setSurname(surname);
-			setPersonCode(personCode);
+			//setPersonCode(personCode);
 		}
 		//4. toString
 		public String toString() {
