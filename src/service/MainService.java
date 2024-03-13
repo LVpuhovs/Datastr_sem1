@@ -2,7 +2,9 @@ package service;
 
 
 
+import java.io.File;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import Datast.Myarraylist;
 import model.Student;
@@ -76,8 +78,31 @@ Myarraylist<Integer> myList = new Myarraylist<Integer>(3);
 			System.out.println(e);
 		}
 		
+		try {
+			Myarraylist<Integer> numbersFromFile = readFromFile("resources\\numbers.txt");
+			numbersFromFile.print();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+	}
+	public static Myarraylist<Integer> readFromFile(String path) throws Exception {
+		if ( path == null || path.length() < 3) throw new Exception("Problem with file path");
 		
+		Myarraylist<Integer> listForNumbers = new Myarraylist<Integer>();
+		
+		File file = new File(path);
+		Scanner scanner = new Scanner(file);
+		
+		while (scanner.hasNextLine()) {
+			String line = scanner.nextLine();
 			
+			Integer tempNumber = Integer.parseInt(line);
+			listForNumbers.addElement(tempNumber);
+		}
+		
+		scanner.close();
+		return listForNumbers;
 	}
 }
