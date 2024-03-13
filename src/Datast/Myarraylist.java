@@ -3,23 +3,23 @@ package Datast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Myarraylist {
+public class Myarraylist<Ttype> {
 	
-	private int[] list;
+	private Ttype[] list;
 	private final int LIST_DEFAULT_SIZE = 10;
 	private int size = LIST_DEFAULT_SIZE;
 	private int counter = 0;
 	
 	//konstruktori
 	public Myarraylist() {
-		list = new int[size]; 
+		list = (Ttype[]) new Object[size]; 
 	}
 	
 	public Myarraylist(int inputSize) {
 		if (inputSize > 0) {
 			size = inputSize;
 		}
-		list = new int[size];
+		list = (Ttype[]) new Object[size];
 	}
 	
 	//Isempty
@@ -66,7 +66,7 @@ public class Myarraylist {
 		*/
 	//4. Izveidot listNew ar newSize izmeru
 		
-		int[] listnew = new int[newSize];
+		Ttype[] listnew = (Ttype[]) new Object[newSize];
 		
 	//5. veikt kopesanu no veca masiva uz jauno
 		for (int i = 0; i < size; i++) {	
@@ -82,7 +82,7 @@ public class Myarraylist {
 	
 	
 	//funkcijas dekleracija
-	public void addElement(int element) {	
+	public void addElement(Ttype element) {	
 	//parbauda isfull tad resize izsaukms
 		if (isFull()) resize();
 	//ieliekam jaunu elementu
@@ -92,7 +92,7 @@ public class Myarraylist {
 		counter++; 
 	}
 	
-	public void addElementIndex(int element, int index) throws Exception {
+	public void addElementIndex(Ttype element, int index) throws Exception {
 		//parbaude par index, ja nav pareizs izmet iznemumu
 		if (index < 0 || index > counter) throw  new Exception("Wrong index");
 		//parbauda isfull
@@ -123,7 +123,7 @@ public class Myarraylist {
 		//samazinam counter pa 1
 		counter--;
 	}
-	public int getElement(int index) throws Exception {
+	public Ttype getElement(int index) throws Exception {
 		//parbaude par index, ja nav pareizs izmet iznemumu
 		if (index < 0 || index > counter) throw  new Exception("Wrong index");
 		if (isEmpty()) throw  new Exception("List Empty");
@@ -140,7 +140,7 @@ public class Myarraylist {
 		throw  new Exception("Element with this index not found");
 	}
 	*/
-	public ArrayList search(int element) throws Exception {
+	public ArrayList search(Ttype element) throws Exception {
 		if (isEmpty()) throw  new Exception("List Empty");
 		
 		ArrayList indexes = new ArrayList();
@@ -151,14 +151,14 @@ public class Myarraylist {
 		return indexes;
 	}
 	
-	public int[] nextElement(int element) throws Exception {
+	public Ttype[] nextElement(Ttype element) throws Exception {
 		ArrayList indexes = search(element);
 		
 		int kaiminuSize = indexes.size();
 		
 		if((int)indexes.get(indexes.size()-1) == counter -1) kaiminuSize--;
 		
-		int[] kaimini = new int[kaiminuSize];
+		Ttype[] kaimini = (Ttype[]) new Object[kaiminuSize];
 		for(int i = 0;i < kaiminuSize; i++) {
 			int indexfromsearchTemp = (int) indexes.get(i);
 			int indexkaiminiTemp = indexfromsearchTemp+1;
@@ -178,13 +178,18 @@ public class Myarraylist {
 	public void makeEmpty() {
 		counter = 0;
 		size = LIST_DEFAULT_SIZE;
-		list = new int[size];
+		list = (Ttype[]) new Object[size];
 		System.gc();
 	}
 	
-	int[] arraySort(int[] array) throws Exception{
+	Ttype[] arraySort(Ttype[] array) throws Exception{
 		if (array == null) throw new Exception("Wrong input parametrs");
 		Arrays.sort(array);
 		return array;
+	}
+	private void swap(int index1, int index2) {
+		Ttype temp = list[index1];
+		list[index1] = list[index2];
+		list[index2] = temp;
 	}
 }
